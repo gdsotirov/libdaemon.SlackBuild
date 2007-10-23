@@ -7,7 +7,7 @@
 . ../slack-package.conf
 
 NAME=libdaemon
-VERSION=0.11
+VERSION=0.12
 BUILD=1
 
 cd $TMP
@@ -18,9 +18,13 @@ fix_source
 
 CFLAGS=$SLKCFLAGS \
 CXXFLAGS=$SLKCFLAGS \
-./configure --build=$ARCH-pc-linux-gnu \
-            --prefix=/usr
-make all
+./configure --build=$ARCH-slackware-linux \
+            --host=$ARCH-slackware-linux \
+            --prefix=/usr \
+	    --enable-shared=yes \
+	    --enable-static=no
+
+make all || exit 1 
 
 PKG="$TMP/package-$NAME"
 mkdir -p $PKG
