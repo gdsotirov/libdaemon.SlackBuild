@@ -7,8 +7,9 @@
 . ../slack-package.conf
 
 NAME=libdaemon
-VERSION=0.13
+VERSION=0.14
 BUILD=1
+ARCH=${ARCH:-i486}
 
 cd $TMP
 tar -zxvf $CWD/$NAME-$VERSION.tar.gz
